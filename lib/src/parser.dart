@@ -2,6 +2,7 @@ library expressions.parser;
 
 import 'expressions.dart';
 import 'package:petitparser/petitparser.dart';
+import 'package:decimal/decimal.dart'; 
 
 class ExpressionParser {
   ExpressionParser() {
@@ -30,7 +31,7 @@ class ExpressionParser {
                       .optional()))
           .flatten()
           .map((v) {
-        return Literal(num.parse(v), v);
+        return Literal(Decimal.parse(v), v);
       });
 
   Parser<String> get escapedChar =>
